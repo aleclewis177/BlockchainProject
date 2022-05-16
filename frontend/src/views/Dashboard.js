@@ -138,7 +138,7 @@ function DashboardContent() {
               }
               {active &&
               <Button
-                onClick={connect}
+                onClick={disconnect}
                 color="warning"
                 variant="contained"
                 sx={{mt: 3, mb: 2}}
