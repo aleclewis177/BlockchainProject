@@ -9,9 +9,21 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+import os
+import environ
+from django.core.exceptions import ImproperlyConfigured
 from pathlib import Path
 from datetime import timedelta
+
+ROOT_DIR = (environ.Path(__file__) - 2)
+env = environ.Env()
+
+if not os.path.exists(str(ROOT_DIR.path(".env"))):
+    raise ImproperlyConfigured(
+        'Not Found .env file'
+    )
+
+env.read_env(str(ROOT_DIR.path(".env")))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -60,7 +72,7 @@ ROOT_URLCONF = 'backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [BASE_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -80,11 +92,16 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': env.str('DBNAME'),
+            'USER': env.str('DBUSER'),
+            'PASSWORD': env.str('DBPASS'),
+            'HOST': env.str('DBHOST'),
+            'PORT': '5432',
+            'OPTIONS': {'sslmode': 'require'}
+        }
     }
-}
 
 
 # Password validation
@@ -167,3 +184,4 @@ SIMPLE_JWT = {
 }
 
 CORS_ALLOW_ALL_ORIGINS = True
+AUTH_USER_MODEL = 'api.User'

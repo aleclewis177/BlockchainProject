@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <section>
       {user && <UserInfo user={user} />}
-      <h1>You are on home page!</h1>
+      <h1>Dashboard Page</h1>
     </section>
   );
 };

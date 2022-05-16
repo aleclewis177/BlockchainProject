@@ -1,13 +1,10 @@
 import React from "react";
-import Footer from "./components/Footer";
-import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import PrivateRoute from "./utils/PrivateRoute";
 import { AuthProvider } from "./context/AuthContext";
 import Home from "./views/homePage";
-import Login from "./views/loginPage";
-import Register from "./views/registerPage";
-import ProtectedPage from "./views/ProtectedPage";
+import SignIn from "./views/SignIn";
+import SignUp from "./views/SignUp";
 
 import "./index.css";
 
@@ -16,15 +13,13 @@ function App() {
     <Router>
       <div className="flex flex-col min-h-screen overflow-hidden">
         <AuthProvider>
-          <Navbar />
           <Switch>
-            <PrivateRoute component={ProtectedPage} path="/protected" exact />
-            <Route component={Login} path="/login" />
-            <Route component={Register} path="/register" />
-            <Route component={Home} path="/" />
+            <Route exact component={Home} path="/" />
+            {/*<PrivateRoute component={ProtectedPage} path="/protected" exact />*/}
+            <Route component={SignIn} path="/login" />
+            <Route component={SignUp} path="/register" />
           </Switch>
         </AuthProvider>
-        <Footer />
       </div>
     </Router>
   );
