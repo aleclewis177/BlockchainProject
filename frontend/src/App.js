@@ -1,27 +1,35 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Web3ReactProvider } from '@web3-react/core'
+import Web3 from 'web3'
 import PrivateRoute from "./utils/PrivateRoute";
 import { AuthProvider } from "./context/AuthContext";
-import Home from "./views/homePage";
+import Dashboard from "./views/Dashboard";
 import SignIn from "./views/SignIn";
 import SignUp from "./views/SignUp";
 
 import "./index.css";
 
+function getLibrary(provider) {
+  return new Web3(provider)
+}
+
 function App() {
   return (
-    <Router>
-      <div className="flex flex-col min-h-screen overflow-hidden">
-        <AuthProvider>
-          <Switch>
-            <Route exact component={Home} path="/" />
-            {/*<PrivateRoute component={ProtectedPage} path="/protected" exact />*/}
-            <Route component={SignIn} path="/login" />
-            <Route component={SignUp} path="/register" />
-          </Switch>
-        </AuthProvider>
-      </div>
-    </Router>
+    <Web3ReactProvider getLibrary={getLibrary}>
+      <Router>
+        <div className="flex flex-col min-h-screen overflow-hidden">
+          <AuthProvider>
+            <Switch>
+              <PrivateRoute exact component={Dashboard} path="/" />
+              {/*<PrivateRoute component={ProtectedPage} path="/protected" exact />*/}
+              <Route component={SignIn} path="/login" />
+              <Route component={SignUp} path="/register" />
+            </Switch>
+          </AuthProvider>
+        </div>
+      </Router>
+    </Web3ReactProvider>
   );
 }
 
