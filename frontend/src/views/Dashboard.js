@@ -17,8 +17,9 @@ import Paper from '@mui/material/Paper';
 import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import { useWeb3React } from "@web3-react/core"
-import { injected } from "../components/wallet/Connectors"
+import { useWeb3React } from '@web3-react/core'
+import { injected } from '../components/wallet/Connectors'
+import Canvas from '../components/Canvas'
 
 import { mainListItems } from './listItems';
 
@@ -108,13 +109,12 @@ function DashboardContent() {
               edge="start"
               color="inherit"
               aria-label="open drawer"
-              onClick={toggleDrawer}
               sx={{
                 marginRight: '36px',
                 ...(open && { display: 'none' }),
               }}
             >
-              <MenuIcon />
+              <MenuIcon onClick={toggleDrawer} />
             </IconButton>
             <Typography
               component="h1"
@@ -131,7 +131,6 @@ function DashboardContent() {
                 onClick={connect}
                 color="success"
                 variant="contained"
-                sx={{mt: 3, mb: 2}}
               >
                 Connect to MetaMask
               </Button>
@@ -141,7 +140,6 @@ function DashboardContent() {
                 onClick={disconnect}
                 color="warning"
                 variant="contained"
-                sx={{mt: 3, mb: 2}}
               >
                 Disconnect
               </Button>
@@ -181,7 +179,7 @@ function DashboardContent() {
         >
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-
+            <Canvas />
           </Container>
         </Box>
       </Box>
