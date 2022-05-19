@@ -19,7 +19,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { useWeb3React } from '@web3-react/core'
 import { injected } from '../components/wallet/Connectors'
-import Canvas from '../components/Canvas'
+import Canvas from '../components/Canvas/Canvas'
+import CanvasV1 from '../components/CanvasV1/CanvasV1'
 
 import { mainListItems } from './listItems';
 
@@ -179,7 +180,7 @@ function DashboardContent() {
         >
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-            <Canvas />
+            <CanvasV1 />
           </Container>
         </Box>
       </Box>

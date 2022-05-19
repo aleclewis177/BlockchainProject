@@ -92,11 +92,8 @@ export default function CanvasModal() {
         detectAutoPan={false}
       >
         <svg width={1000} height={1000}>
-          <g fillOpacity=".5" strokeWidth="4">
-            <rect x="400" y="40" width="100" height="200" fill="#4286f4" stroke="#f4f142"/>
-            <circle cx="108" cy="108.5" r="100" fill="#0ff" stroke="#0ff"/>
-            <circle cx="180" cy="209.5" r="100" fill="#ff0" stroke="#ff0"/>
-            <circle cx="220" cy="109.5" r="100" fill="#f0f" stroke="#f0f"/>
+          <g fillOpacity=".5" strokeWidth="0.1">
+            <rect height="150" width="100" strokeWidth="3"  strokeDasharray="5 10" />
           </g>
         </svg>
       </ReactSVGPanZoom>
