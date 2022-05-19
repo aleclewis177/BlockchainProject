@@ -26,7 +26,7 @@ export type { ERC165 } from "./@openzeppelin/contracts/utils/introspection/ERC16
 export { ERC165__factory } from "./factories/@openzeppelin/contracts/utils/introspection/ERC165__factory";
 export type { IERC165 } from "./@openzeppelin/contracts/utils/introspection/IERC165";
 export { IERC165__factory } from "./factories/@openzeppelin/contracts/utils/introspection/IERC165__factory";
-export type { Greeter } from "./contracts/Membership.sol/Greeter";
-export { Greeter__factory } from "./factories/contracts/Membership.sol/Greeter__factory";
-export type { Membership } from "./contracts/Membership.sol/Membership";
-export { Membership__factory } from "./factories/contracts/Membership.sol/Membership__factory";
+export type { Board } from "./contracts/Board";
+export { Board__factory } from "./factories/contracts/Board__factory";
+export type { Membership } from "./contracts/Membership";
+export { Membership__factory } from "./factories/contracts/Membership__factory";

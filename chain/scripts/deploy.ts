@@ -23,6 +23,14 @@ async function main() {
   await membership.deployed();
 
   console.log("Membership Contract deployed to:", membership.address);
+
+  // We get the contract to deploy
+  const Board = await ethers.getContractFactory("Board");
+  const board = await Board.deploy();
+
+  await board.deployed();
+
+  console.log("Board Contract deployed to:", board.address);
   
 }
 
